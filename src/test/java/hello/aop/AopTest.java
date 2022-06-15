@@ -1,5 +1,6 @@
 package hello.aop;
 
+import hello.aop.aop.AspectV6Advice;
 import hello.aop.order.OrderRepository;
 import hello.aop.order.OrderService;
 import hello.aop.order.aop.*;
