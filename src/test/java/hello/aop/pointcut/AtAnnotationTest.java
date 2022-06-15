@@ -29,7 +29,7 @@ public class AtAnnotationTest {
     @Slf4j
     @Aspect
     static class AtAnnotationAspect {
-        @Around("@annotation(hello.aop.order.member.annotation.MethodAop)")
+        @Around("@annotation(hello.aop.member.annotation.MethodAop)")
         public Object doAtAnnotation(ProceedingJoinPoint joinPoint) throws Throwable {
 
             log.info("[@annotation] {}", joinPoint.getSignature());

@@ -36,7 +36,7 @@ public class ThisTargetTest {
     static class ThisTargetAspect {
 
         //부모 타입 허용
-        @Around("this(hello.aop.order.member.MemberService)")
+        @Around("this(hello.aop.member.MemberService)")
         public Object doThisInterface(ProceedingJoinPoint joinPoint) throws Throwable {
 
             log.info("[this-interface] {}", joinPoint.getSignature());
@@ -44,7 +44,7 @@ public class ThisTargetTest {
         }
 
         //부모 타입 허용
-        @Around("target(hello.aop.order.member.MemberService)")
+        @Around("target(hello.aop.member.MemberService)")
         public Object doTargetInterface(ProceedingJoinPoint joinPoint) throws Throwable {
 
             log.info("[target-interface] {}", joinPoint.getSignature());
@@ -54,14 +54,14 @@ public class ThisTargetTest {
         //this: 스프링 AOP 프록시 객체 대상
         //JDK 동적 프록시는 인터페이스를 기반으로 생성되므로 구현 클래스를 알 수 없음
         //CGLIB 프록시는 구현 클래스를 기반으로 생성되므로 구현 클래스를 알 수 있음
-        @Around("this(hello.aop.order.member.MemberServiceImpl)")
+        @Around("this(hello.aop.member.MemberServiceImpl)")
         public Object doThis(ProceedingJoinPoint joinPoint) throws Throwable {
             log.info("[this-impl] {}", joinPoint.getSignature());
             return joinPoint.proceed();
         }
 
         //target: 실제 target 객체 대상
-         @Around("target(hello.aop.order.member.MemberServiceImpl)")
+         @Around("target(hello.aop.member.MemberServiceImpl)")
         public Object doTarget(ProceedingJoinPoint joinPoint) throws Throwable {
               log.info("[target-impl] {}", joinPoint.getSignature());
               return joinPoint.proceed();

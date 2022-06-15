@@ -22,12 +22,12 @@ public class WithinTest {
 
     @Test
     void withinExact() {
-        pointcut.setExpression("within(hello.aop.order.member.MemberServiceImpl)");
+        pointcut.setExpression("within(hello.aop.member.MemberServiceImpl)");
         assertThat(pointcut.matches(helloMethod, MemberServiceImpl.class)).isTrue();
     }
     @Test
     void withinStar() {
-        pointcut.setExpression("within(hello.aop.order.member.*Service*)");
+        pointcut.setExpression("within(hello.aop.member.*Service*)");
         assertThat(pointcut.matches(helloMethod, MemberServiceImpl.class)).isTrue();
     }
     @Test
@@ -39,14 +39,14 @@ public class WithinTest {
     @Test
     @DisplayName("타겟의 타입에만 직접 적용, 인터페이스를 선정하면 안된다.")
     void withinSuperTypeFalse() {
-        pointcut.setExpression("within(hello.aop.order.member.MemberService)");
+        pointcut.setExpression("within(hello.aop.member.MemberService)");
         assertThat(pointcut.matches(helloMethod, MemberServiceImpl.class)).isFalse();
     }
 
     @Test
     @DisplayName("타겟의 타입에만 직접 적용, 인터페이스를 선정하면 안된다.")
     void executionSuperTypeTrue() {
-        pointcut.setExpression("execution(* hello.aop.order.member.MemberService.*(..))");
+        pointcut.setExpression("execution(* hello.aop.member.MemberService.*(..))");
         assertThat(pointcut.matches(helloMethod, MemberServiceImpl.class)).isTrue();
     }
 }
